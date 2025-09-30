@@ -1,5 +1,6 @@
 import Navigation from "@/components/Navigation";
 import Hero from "@/components/Hero";
+import PromoBanner from "@/components/PromoBanner";
 import SignaturePieces from "@/components/SignaturePieces";
 import Legacy from "@/components/Legacy";
 import WhyChooseUs from "@/components/WhyChooseUs";
@@ -10,6 +11,7 @@ const Index = () => {
     <div className="min-h-screen">
       <Navigation />
       <Hero />
+      <PromoBanner />
       <SignaturePieces />
       <Legacy />
       <WhyChooseUs />
