@@ -1,6 +1,7 @@
 import { ShoppingCart, Heart } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
+import { toast } from "@/hooks/use-toast";
 import pendant from "@/assets/pendant.jpg";
 import earrings from "@/assets/earrings.jpg";
 import bracelet from "@/assets/bracelet.jpg";
@@ -33,6 +34,20 @@ const products = [
 ];
 
 const SignaturePieces = () => {
+  const handleAddToCart = (productName: string) => {
+    toast({
+      title: "কার্টে যোগ করা হয়েছে!",
+      description: `${productName} আপনার কার্টে যোগ করা হয়েছে।`,
+    });
+  };
+
+  const handleAddToWishlist = (productName: string) => {
+    toast({
+      title: "উইশলিস্টে যোগ করা হয়েছে!",
+      description: `${productName} আপনার উইশলিস্টে যোগ করা হয়েছে।`,
+    });
+  };
+
   return (
     <section id="collections" className="py-24 bg-secondary/5">
       <div className="container mx-auto px-4 lg:px-8">
@@ -61,7 +76,12 @@ const SignaturePieces = () => {
                     className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
                   />
                   <div className="absolute top-4 right-4 flex flex-col gap-2 opacity-0 group-hover:opacity-100 transition-opacity">
-                    <Button size="icon" variant="secondary" className="rounded-full shadow-lg">
+                    <Button 
+                      size="icon" 
+                      variant="secondary" 
+                      className="rounded-full shadow-lg"
+                      onClick={() => handleAddToWishlist(product.name)}
+                    >
                       <Heart className="h-4 w-4" />
                     </Button>
                   </div>
@@ -73,7 +93,11 @@ const SignaturePieces = () => {
                   </div>
                   <div className="flex items-center justify-between">
                     <span className="text-2xl font-serif font-bold">{product.price}</span>
-                    <Button size="icon" className="rounded-full">
+                    <Button 
+                      size="icon" 
+                      className="rounded-full"
+                      onClick={() => handleAddToCart(product.name)}
+                    >
                       <ShoppingCart className="h-4 w-4" />
                     </Button>
                   </div>
